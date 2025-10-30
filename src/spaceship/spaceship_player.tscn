@@ -43,7 +43,7 @@ animations = [{
 
 [node name="SpaceshipPlayer" type="CharacterBody2D"]
 z_index = 1
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_l3nam")
 metadata/_custom_type_script = "uid://b3wlim06or27h"
 

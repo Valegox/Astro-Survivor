@@ -13,7 +13,8 @@ var max_health: int = 100
 var health: int = 50
 var move_speed: float = 100
 var attack_speed: float = 100
-var rotation_speed: float = 0.1
+var move_damping: float = 0.5
+var rot_damping: float = 0.1
 var damage: int = 10
 
 var gun_to_use: int = 0

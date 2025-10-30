@@ -12,11 +12,11 @@ class EnemyZone:
 		self.initial_quantity = initial_quantity	
 
 const enemies_per_type = {
-	EnemyType.NORMAL: preload("res://src/spaceship/spaceship_enemy_ram_base.tscn"),
-	EnemyType.SCOUT: preload("res://src/spaceship/spaceship_enemy_ram_base.tscn"),
-	EnemyType.CRUISER: preload("res://src/spaceship/spaceship_enemy_ram_base.tscn"),
-	EnemyType.HUNTER: preload("res://src/spaceship/spaceship_enemy_ram_base.tscn"),
-	EnemyType.MONOLITH: preload("res://src/spaceship/spaceship_enemy_ram_base.tscn"),
+	EnemyType.NORMAL: preload("res://src/spaceship/spaceship_enemy_base.tscn"),
+	EnemyType.SCOUT: preload("res://src/spaceship/spaceship_enemy_base.tscn"),
+	EnemyType.CRUISER: preload("res://src/spaceship/spaceship_enemy_base.tscn"),
+	EnemyType.HUNTER: preload("res://src/spaceship/spaceship_enemy_base.tscn"),
+	EnemyType.MONOLITH: preload("res://src/spaceship/spaceship_enemy_base.tscn"),
 }
 
 var current_wave: int = 0

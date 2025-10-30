@@ -10,13 +10,14 @@ func _physics_process(delta: float) -> void:
 	
 func _process_movement() -> void:
 	var movement = Player.position - position
-	velocity = movement.normalized() * move_speed
+	var target_velocity = movement.normalized() * move_speed
+	velocity = lerp(velocity, target_velocity, move_damping)
 	move_and_slide()
 
 func _process_rotation() -> void:
 	var angle = (Player.position - position).angle()
 	var target_rotation = PI / 2 + angle
-	rotation = lerp_angle(rotation, target_rotation, rotation_speed)
+	rotation = lerp_angle(rotation, target_rotation, rot_damping)
 
 func die() -> void:
 	super()
