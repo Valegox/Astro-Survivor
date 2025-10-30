@@ -8,15 +8,7 @@ func _physics_process(delta: float) -> void:
 	process_rotation()
 
 func process_movement() -> void:
-	var movement = Vector2(0, 0)
-	if (Input.is_action_pressed("move_up")):
-		movement.y -= 1
-	if (Input.is_action_pressed("move_down")):
-		movement.y += 1
-	if (Input.is_action_pressed("move_left")):
-		movement.x -= 1
-	if (Input.is_action_pressed("move_right")):
-		movement.x += 1
+	var movement = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
 	velocity = movement.normalized() * move_speed
 	move_and_slide()
 	

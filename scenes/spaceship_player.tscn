@@ -42,14 +42,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_p4uct"]
 
 [node name="SpaceshipPlayer" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_l3nam")
 metadata/_custom_type_script = "uid://b3wlim06or27h"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_mrcso")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_p4uct")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_shoot"]
