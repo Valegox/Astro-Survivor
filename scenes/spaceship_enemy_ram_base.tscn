@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0kmaoyxudgw1"]
+
+[ext_resource type="Script" uid="uid://bompumk3lhx46" path="res://scripts/spaceship_enemy_ram_base.gd" id="1_ye3wi"]
+[ext_resource type="Texture2D" uid="uid://b4v8c27g0rp8k" path="res://assets/ships/Ligher.png" id="2_v4m15"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg4k0"]
+atlas = ExtResource("2_v4m15")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1myx2"]
+atlas = ExtResource("2_v4m15")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x403"]
+atlas = ExtResource("2_v4m15")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usnq5"]
+atlas = ExtResource("2_v4m15")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mrcso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg4k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1myx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x403")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usnq5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p4uct"]
+
+[node name="SpaceshipRamBase" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_ye3wi")
+metadata/_custom_type_script = "uid://b3wlim06or27h"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mrcso")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p4uct")

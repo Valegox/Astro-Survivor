@@ -1,7 +1,8 @@
 extends SpaceshipBase
 class_name SpaceshipPlayer
 
-var move_speed = 1000
+func _ready() -> void:
+	move_speed = 500
 
 func _physics_process(delta: float) -> void:
 	process_movement()
