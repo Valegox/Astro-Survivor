@@ -1,6 +1,6 @@
 [gd_scene load_steps=38 format=3 uid="uid://hctf35n6ig4x"]
 
-[ext_resource type="PackedScene" uid="uid://4hvuygnug0dc" path="res://scenes/spaceship_player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://bl8r82ktpuaql" path="res://scripts/game_manager.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://culngit3itux5" path="res://assets/environment/Backgrounds/PNGs/Condesed/Starry background  - Layer 01 - Void.png" id="2_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bwl3873nwgrvl" path="res://assets/environment/Backgrounds/PNGs/Condesed/Starry background  - Layer 02 - Stars.png" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://dp16ywcdbxysw" path="res://assets/environment/Backgrounds/PNGs/Condesed/Starry background  - Layer 03 - Stars.png" id="4_iywne"]
@@ -228,6 +228,7 @@ animations = [{
 }]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_p57ef")
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -252,11 +253,15 @@ shape = SubResource("SegmentShape2D_lbhrr")
 
 [node name="Right Border" type="StaticBody2D" parent="Environment/Borders"]
 position = Vector2(639, 0)
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Borders/Right Border"]
 shape = SubResource("SegmentShape2D_iywne")
 
 [node name="Left Border" type="StaticBody2D" parent="Environment/Borders"]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Borders/Left Border"]
 shape = SubResource("SegmentShape2D_iywne")
@@ -275,12 +280,14 @@ autoplay = "default"
 sprite_frames = SubResource("SpriteFrames_qouja")
 autoplay = "default"
 
-[node name="SpaceshipPlayer" parent="." instance=ExtResource("1_uwrxv")]
-unique_name_in_owner = true
-position = Vector2(0, -1)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.8, 1.8)
 
 [node name="SpaceshipRamBase" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(112, 57)
+
+[node name="Spawn Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Spawn Timer" to="." method="_spawn_enemies"]

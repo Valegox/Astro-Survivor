@@ -42,7 +42,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_p4uct"]
 
 [node name="SpaceshipRamBase" type="CharacterBody2D"]
-collision_mask = 3
 script = ExtResource("1_ye3wi")
 metadata/_custom_type_script = "uid://b3wlim06or27h"
 
