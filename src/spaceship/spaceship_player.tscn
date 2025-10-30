@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://4hvuygnug0dc"]
+
+[ext_resource type="Script" uid="uid://de0gs6l4jhbwc" path="res://src/spaceship/spaceship_player.gd" id="1_l3nam"]
+[ext_resource type="Texture2D" uid="uid://c3t13vflow4xk" path="res://assets/spaceships/Lightning.png" id="2_oldiv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs8u7"]
+atlas = ExtResource("2_oldiv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0rat"]
+atlas = ExtResource("2_oldiv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me4wu"]
+atlas = ExtResource("2_oldiv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_343tk"]
+atlas = ExtResource("2_oldiv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mrcso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xs8u7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0rat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me4wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_343tk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p4uct"]
+
+[node name="SpaceshipPlayer" type="CharacterBody2D"]
+z_index = 1
+collision_mask = 3
+script = ExtResource("1_l3nam")
+metadata/_custom_type_script = "uid://b3wlim06or27h"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mrcso")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p4uct")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="LeftGun" type="Node2D" parent="."]
+position = Vector2(-9, -12)
+
+[node name="RightGun" type="Node2D" parent="."]
+position = Vector2(9, -12)
+
+[connection signal="timeout" from="Timer" to="." method="_shoot"]
