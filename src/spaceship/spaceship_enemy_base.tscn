@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0kmaoyxudgw1"]
+[gd_scene load_steps=11 format=3 uid="uid://d0kmaoyxudgw1"]
 
 [ext_resource type="Script" uid="uid://bompumk3lhx46" path="res://src/spaceship/spaceship_enemy_base.gd" id="1_ye3wi"]
 [ext_resource type="Texture2D" uid="uid://b4v8c27g0rp8k" path="res://assets/spaceships/Ligher.png" id="2_v4m15"]
@@ -42,6 +42,8 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p4uct"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbpgq"]
+
 [node name="SpaceshipRamBase" type="CharacterBody2D"]
 collision_layer = 5
 collision_mask = 4
@@ -60,3 +62,10 @@ offset_left = -12.0
 offset_top = -24.0
 offset_right = 12.0
 offset_bottom = -22.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gbpgq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

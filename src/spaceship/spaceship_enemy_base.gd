@@ -4,13 +4,13 @@ class_name SpaceshipEnemyRamBase
 const XPSHARD = preload("res://src/xp_shard.tscn")
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var health_bar: ProgressBar = $UIHealthBar
 
 func _ready() -> void:
 	move_speed = 120
 	move_damping = 0.5
 	rot_damping = 0.7
-	health_bar.value = health
+	health_bar = get_node("UIHealthBar")
+	health_bar.set_health(health, max_health)
 	max_health = 50
 	health = 50
 
@@ -31,9 +31,7 @@ func _process_rotation() -> void:
 
 func apply_damage(value: int, point: Vector2) -> void:
 	super(value, point)
-	health_bar.value = health
-	health_bar.trigger_scale(2.5, .35)
-	health_bar.trigger_fill_color(Color.HOT_PINK, 0.4)
+	print('got damage')
 
 func die() -> void:
 	super()
@@ -43,3 +41,9 @@ func die() -> void:
 	var hud = get_parent().get_node("Hud")
 	hud.trigger_score()
 	print('enemy died')
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is SpaceshipPlayer:
+		var player = body as SpaceshipPlayer
+		player.apply_damage(10, position)

@@ -3,18 +3,10 @@
 [ext_resource type="Script" uid="uid://davgq8p1jm34v" path="res://src/ui/ingame/ui_health_bar.gd" id="1_3ayqa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsov7"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
+bg_color = Color(1, 1, 1, 0.768627)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4v30e"]
 bg_color = Color(1, 0, 0, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
 
 [node name="UIHealthBar" type="ProgressBar"]
 offset_right = 24.0
