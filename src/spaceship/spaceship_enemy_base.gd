@@ -1,6 +1,8 @@
 extends SpaceshipBase
 class_name SpaceshipEnemyRamBase
 
+const XPSHARD = preload("res://src/xp_shard.tscn")
+
 func _ready() -> void:
 	move_speed = 120
 
@@ -21,4 +23,7 @@ func _process_rotation() -> void:
 
 func die() -> void:
 	super()
+	var xp_shard = XPSHARD.instantiate()
+	xp_shard.position = position
+	get_parent().add_child(xp_shard)
 	print('enemy died')

@@ -1,6 +1,9 @@
 extends SpaceshipBase
 class_name SpaceshipPlayer
 
+var xp: int = 0
+var level: int = 1
+
 func _ready() -> void:
 	move_speed = 500
 	move_damping = 0.15
@@ -22,3 +25,5 @@ func process_rotation() -> void:
 	var angle = (mouse_pos - position).angle()
 	var target_rotation = PI / 2 + angle
 	rotation = lerp_angle(rotation, target_rotation, rot_damping)
+
+		
