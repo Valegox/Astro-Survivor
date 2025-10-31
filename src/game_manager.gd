@@ -58,7 +58,7 @@ func _run_next_wave() -> void:
 	_spawn_enemies()
 
 func _spawn_enemies() -> void:
-	if enemies_spawned >= 1: #max_enemies:
+	if enemies_spawned >= max_enemies:
 		return
 	for i in range(0, current_wave):
 		enemies_spawned += 1
