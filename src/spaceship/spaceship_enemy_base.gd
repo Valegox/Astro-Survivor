@@ -3,8 +3,14 @@ class_name SpaceshipEnemyRamBase
 
 const XPSHARD = preload("res://src/xp_shard.tscn")
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_bar: ProgressBar = $UIHealthBar
+
 func _ready() -> void:
 	move_speed = 120
+	move_damping = 0.5
+	rot_damping = 0.7
+	health_bar.value = health
 
 func _physics_process(delta: float) -> void:
 	_process_movement()
@@ -19,7 +25,13 @@ func _process_movement() -> void:
 func _process_rotation() -> void:
 	var angle = (Player.position - position).angle()
 	var target_rotation = PI / 2 + angle
-	rotation = lerp_angle(rotation, target_rotation, rot_damping)
+	sprite.rotation = lerp_angle(rotation, target_rotation, rot_damping)
+
+func apply_damage(value: int, point: Vector2) -> void:
+	super(value, point)
+	health_bar.value = health
+	health_bar.trigger_scale(2, .35)
+	health_bar.trigger_fill_color(Color.HOT_PINK, 0.4)
 
 func die() -> void:
 	super()

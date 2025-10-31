@@ -5,7 +5,7 @@ var xp: int = 0
 var level: int = 1
 
 func _ready() -> void:
-	move_speed = 500
+	move_speed = 350
 	move_damping = 0.15
 	rot_damping = 0.5
 	damage = 10
