@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bompumk3lhx46" path="res://src/spaceship/spaceship_enemy_base.gd" id="1_ye3wi"]
 [ext_resource type="Texture2D" uid="uid://b4v8c27g0rp8k" path="res://assets/spaceships/Ligher.png" id="2_v4m15"]
-[ext_resource type="PackedScene" uid="uid://bbxgi0py34l54" path="res://src/ui/ui_health_bar.tscn" id="3_gbpgq"]
+[ext_resource type="PackedScene" uid="uid://bbxgi0py34l54" path="res://src/ui/ingame/ui_health_bar.tscn" id="3_gbpgq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qg4k0"]
 atlas = ExtResource("2_v4m15")

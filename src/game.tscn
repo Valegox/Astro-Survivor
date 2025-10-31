@@ -1,10 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://hctf35n6ig4x"]
+[gd_scene load_steps=39 format=3 uid="uid://hctf35n6ig4x"]
 
 [ext_resource type="Script" uid="uid://bl8r82ktpuaql" path="res://src/game_manager.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://culngit3itux5" path="res://assets/environment/Backgrounds/PNGs/Condesed/Starry background  - Layer 01 - Void.png" id="2_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bwl3873nwgrvl" path="res://assets/environment/Backgrounds/PNGs/Condesed/Starry background  - Layer 02 - Stars.png" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://dp16ywcdbxysw" path="res://assets/environment/Backgrounds/PNGs/Condesed/Starry background  - Layer 03 - Stars.png" id="4_iywne"]
 [ext_resource type="Script" uid="uid://bg3ny6s5glagk" path="res://src/camera_shake.gd" id="5_pk08u"]
+[ext_resource type="PackedScene" uid="uid://dcete88gw55ta" path="res://src/ui/hud/hud.tscn" id="6_pk08u"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_lbhrr"]
 a = Vector2(-324, 10)
@@ -267,7 +268,6 @@ collision_mask = 0
 shape = SubResource("SegmentShape2D_iywne")
 
 [node name="Background" type="Node2D" parent="Environment"]
-visible = false
 
 [node name="Layer 1" type="AnimatedSprite2D" parent="Environment/Background"]
 sprite_frames = SubResource("SpriteFrames_5newe")
@@ -281,6 +281,13 @@ autoplay = "default"
 sprite_frames = SubResource("SpriteFrames_qouja")
 autoplay = "default"
 
+[node name="ColorRect" type="ColorRect" parent="Environment/Background"]
+offset_left = -327.0
+offset_top = -188.0
+offset_right = 327.0
+offset_bottom = 188.0
+color = Color(0, 0, 0, 0.631373)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 zoom = Vector2(1.8, 1.8)
@@ -289,5 +296,7 @@ script = ExtResource("5_pk08u")
 [node name="Spawn Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="Hud" parent="." instance=ExtResource("6_pk08u")]
 
 [connection signal="timeout" from="Spawn Timer" to="." method="_spawn_enemies"]

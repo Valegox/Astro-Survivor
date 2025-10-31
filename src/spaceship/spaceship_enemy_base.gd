@@ -11,6 +11,8 @@ func _ready() -> void:
 	move_damping = 0.5
 	rot_damping = 0.7
 	health_bar.value = health
+	max_health = 50
+	health = 50
 
 func _physics_process(delta: float) -> void:
 	_process_movement()
@@ -30,7 +32,7 @@ func _process_rotation() -> void:
 func apply_damage(value: int, point: Vector2) -> void:
 	super(value, point)
 	health_bar.value = health
-	health_bar.trigger_scale(2, .35)
+	health_bar.trigger_scale(2.5, .35)
 	health_bar.trigger_fill_color(Color.HOT_PINK, 0.4)
 
 func die() -> void:
@@ -38,4 +40,6 @@ func die() -> void:
 	var xp_shard = XPSHARD.instantiate()
 	xp_shard.position = position
 	get_parent().add_child(xp_shard)
+	var hud = get_parent().get_node("Hud")
+	hud.trigger_score()
 	print('enemy died')
