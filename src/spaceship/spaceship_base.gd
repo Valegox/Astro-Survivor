@@ -30,16 +30,19 @@ func _shoot() -> void:
 
 func apply_damage(value: int, point: Vector2) -> void:
 	health -= value
+	var cam = get_parent().get_node("%Camera2D")
 	print('[damage] health:', health)
 	if health <= 0:
 		var fx_explosion = FX_DEATH_EXPLOSION.instantiate()
 		fx_explosion.position = position
 		get_parent().add_child(fx_explosion)
+		cam.add_trauma(0.4)
 		die()
 	else:
 		var fx_explosion = FX_DMG_EXPLOSION.instantiate()
 		fx_explosion.position = point
 		add_child(fx_explosion)
+		cam.add_trauma(0.2)
 
 func die() -> void:
 	print('[dead]')
