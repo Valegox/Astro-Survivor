@@ -10,12 +10,13 @@ const FX_DEATH_EXPLOSION = preload("res://src/fx/fx_explosion_death.tscn")
 @onready var right_gun: Node2D = $RightGun
 
 var max_health: int = 100
-var health: int = 50
+var health: int = 100
 var move_speed: float = 100
 var attack_speed: float = 100
-var move_damping: float = 0.5
-var rot_damping: float = 0.1
+var move_damping: float = 1
+var rot_damping: float = 1
 var damage: int = 10
+var health_bar: UIHealthBar
 
 var gun_to_use: int = 0
 
@@ -36,13 +37,19 @@ func apply_damage(value: int, point: Vector2) -> void:
 		var fx_explosion = FX_DEATH_EXPLOSION.instantiate()
 		fx_explosion.position = position
 		get_parent().add_child(fx_explosion)
-		cam.add_trauma(0.4)
+		if cam != null:
+			cam.trigger_zoom(1.1, 0.3)
+			cam.trigger_shake(0.4)
 		die()
 	else:
 		var fx_explosion = FX_DMG_EXPLOSION.instantiate()
 		fx_explosion.position = point
 		add_child(fx_explosion)
-		cam.add_trauma(0.2)
+		if cam != null:
+			cam.trigger_shake(0.2)
+		health_bar.set_health(health, max_health)
+		health_bar.trigger_scale(2, .35)
+		health_bar.trigger_fill_color(Color.HOT_PINK, 0.4)
 
 func die() -> void:
 	print('[dead]')

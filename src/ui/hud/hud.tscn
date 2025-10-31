@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcete88gw55ta"]
+
+[ext_resource type="Script" uid="uid://fnk0a3sj4ng0" path="res://src/ui/hud/hud.gd" id="1_cvkdw"]
+[ext_resource type="FontFile" uid="uid://bsoetgcr3unh2" path="res://assets/ui/BMSPA___.TTF" id="1_jobw0"]
+[ext_resource type="PackedScene" uid="uid://bbxgi0py34l54" path="res://src/ui/ingame/ui_health_bar.tscn" id="2_udh2q"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_cvkdw")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_udh2q")]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 323.0
+offset_bottom = 51.0
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -58.0
+offset_top = 150.0
+offset_right = 58.0
+offset_bottom = 191.0
+grow_horizontal = 2
+pivot_offset = Vector2(58, 20)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 30
+theme_override_fonts/font = ExtResource("1_jobw0")
+theme_override_font_sizes/font_size = 40
+text = "+100"
+horizontal_alignment = 1
+vertical_alignment = 1

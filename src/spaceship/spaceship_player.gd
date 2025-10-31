@@ -1,14 +1,19 @@
 extends SpaceshipBase
 class_name SpaceshipPlayer
 
+@onready var hud: CanvasLayer = $Hud
+
 var xp: int = 0
 var level: int = 1
 
 func _ready() -> void:
-	move_speed = 500
+	move_speed = 350
 	move_damping = 0.15
 	rot_damping = 0.5
 	damage = 10
+	var hud = get_parent().get_node("Game").get_node("Hud")
+	health_bar = hud.get_node("HealthBar")
+	health_bar.set_health(health, max_health)
 
 func _physics_process(delta: float) -> void:
 	process_movement()
@@ -39,5 +44,3 @@ func process_level() -> void:
 		xp_anim.play()
 		await xp_anim.animation_finished
 		xp_anim.hide()
-
-		
