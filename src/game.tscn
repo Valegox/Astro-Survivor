@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://culngit3itux5" path="res://assets/environment/Backgrounds/PNGs/Condesed/Starry background  - Layer 01 - Void.png" id="2_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bwl3873nwgrvl" path="res://assets/environment/Backgrounds/PNGs/Condesed/Starry background  - Layer 02 - Stars.png" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://dp16ywcdbxysw" path="res://assets/environment/Backgrounds/PNGs/Condesed/Starry background  - Layer 03 - Stars.png" id="4_iywne"]
-[ext_resource type="Script" uid="uid://bg3ny6s5glagk" path="res://src/camera_shake.gd" id="5_pk08u"]
+[ext_resource type="Script" path="res://src/camera_shake.gd" id="5_pk08u"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_lbhrr"]
 a = Vector2(-324, 10)

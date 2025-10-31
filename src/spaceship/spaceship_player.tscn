@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://4hvuygnug0dc"]
+[gd_scene load_steps=11 format=3 uid="uid://4hvuygnug0dc"]
 
 [ext_resource type="Script" uid="uid://de0gs6l4jhbwc" path="res://src/spaceship/spaceship_player.gd" id="1_l3nam"]
 [ext_resource type="Texture2D" uid="uid://c3t13vflow4xk" path="res://assets/spaceships/Lightning.png" id="2_oldiv"]
+[ext_resource type="PackedScene" uid="uid://wlb2e3c4h8ge" path="res://src/level_up_effect.tscn" id="3_vda52"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xs8u7"]
 atlas = ExtResource("2_oldiv")
@@ -71,5 +72,8 @@ position = Vector2(9, -12)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_n5j5o")
 debug_color = Color(0.9556996, 0, 0.54439473, 0.41960785)
+
+[node name="XpAnim" parent="." instance=ExtResource("3_vda52")]
+visible = false
 
 [connection signal="timeout" from="Timer" to="." method="_shoot"]
